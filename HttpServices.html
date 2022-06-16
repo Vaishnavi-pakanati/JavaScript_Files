@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Scorejedi</title>
+   <link rel="stylesheet" href="main.css">
+</head>
+<body>
+   <div class="container">
+      <h1>ScoreBoard</h1>
+      <table border="1">
+         <div class="title-box">
+            <tr>
+               <td>
+                  <div class="league">
+                     <img id="leagueLogo">
+                     <p id="leagueName">League Name</p>
+                  </div>
+               </td>
+               <td>
+                  <div class="team">
+                     <img id="homeLogo">
+                     <p id="homeName">Team name</p>
+                  </div>
+               </td>
+               <td>
+                  <div>
+                     <p id="goals"></p>
+                  </div>
+
+               </td>
+               <td>
+                  <div class="team">
+                     <img id="awayLogo">
+                     <p id="awayName">Team name</p>
+                  </div>
+               </td>
+            </tr>
+         </div>
+      </table>
+      <hr>
+      <div id="matchTable" class="matches-table">
+      </div>
+   </div>
+   </table>
+   <script src="HttpServices.js"></script>
+</body>
+</html>
