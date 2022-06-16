@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration form</title>
+    <style>
+        .registration-form {
+            background-image: url("reg.jpg");
+            background-size: cover;
+            min-height: 100vh;
+            padding: 50px;
+        }
+
+        .contact-heading {
+            text-align: center;
+            font-family: roboto;
+            font-size: 50px;
+            color: rgb(167, 179, 233);
+            font-weight: 600;
+            padding-bottom: 30px;
+        }
+
+        .right-container {
+            background-color: rgb(178, 188, 201);
+            height: 60vh;
+            width: 30%;
+            margin-left: 600px;
+        }
+
+        .input {
+            width: 70%;
+            padding: 10px;
+            margin: 15px;
+        }
+
+        .languages {
+            font-size: 18px;
+            margin-left: 12px;
+        }
+
+        .gender {
+            margin-left: 12px;
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+
+        .country {
+            margin-left: 12px;
+            font-size: 18px;
+            margin-bottom: 12px;
+            margin-top: 12px;
+        }
+
+        .address {
+            margin-left: 12px;
+            font-size: 18px;
+            margin-bottom: 12px;
+            margin-top: 12px;
+        }
+
+        .button {
+            background-color: rgb(164, 149, 179);
+            border: 1px solid;
+            padding: 10px;
+            width: 20%;
+            color: rgb(15, 12, 12);
+            margin-left: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="registration-form">
+        <div class="left-container" style>
+            <div class="contact-heading">
+                <span>Register Form</span>
+            </div>
+        </div>
+        <div class="right-container">
+            <form class="form" id="myform" name="myform">
+                <input type="text" class=input id="fname" name="firstname" placeholder="Enter First Name" />
+                <input type="text" class=input id="lname" name="lastname" placeholder="Enter Last Name" />
+                <input type="email" class=input id="email" name="email"  placeholder="Enter your Email id"  reqiued/>
+                <input type="password" class=input id="pass1" name="password1" placeholder="Enter your password" />
+                <input type="password" class=input id="pass2" name="password2" placeholder="Re-enter your password" />
+                <div class="gender">
+                    <span>Gender:- </span>
+                    <input type="radio" id="male" name="Gender" value="Male">
+                    <label for="male">Male</label>
+                    <input type="radio" id="female" name="Gender" value="Female">
+                    <label for="female">Female</label>
+                </div>
+                <div class="languages">
+                    <span>Languages Known:-</span>
+                    <input type="checkbox" id="Java" name="languages" value="Java" />
+                    <label for="Java">Java</label>
+                    <input type="checkbox" id="Python" name="languages" value="Python" />
+                    <label for="Python">Python</label>
+                    <input type="checkbox" id="R" name="languages" value="R" />
+                    <label for="R">R</label>
+                </div>
+                <div class="country">
+                    <label for="country">Choose your country:</label>
+                    <select id="country" name="country">
+                        <option value="India">India</option>
+                        <option value="US">US</option>
+                        <option value="Canada">Canada</option>
+                    </select>
+                </div>
+                <div class="address">
+                    <label for="msg">Enter your Address:</label>
+                    <textarea id="msg" name="message" rows="3" cols="30"
+                        placeholder="Type your address here"></textarea>
+                </div>
+                <div class="buttons">
+                    <input type="submit" class="button" id="submit" value="Submit" />
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+<script>
+    var form = document.getElementById("myform"); function getData(event) {
+        event.preventDefault(); 
+        var fname = document.myform.fname.value;
+        var lname = document.myform.lname.value;
+        var pass1 = document.myform.password1.value;
+        var pass2 = document.myform.password2.value;
+        var email = document.myform.email.value;
+        var gen = document.myform.Gender.value;
+        var languages = new Array();
+        var checkboxes = document.getElementsByName("languages");
+        for (var box of checkboxes) {
+            if (box.checked) {
+                languages.push(box.value);
+            }
+        }
+        var country = document.myform.country.value;
+        var msg = document.myform.message.value;
+         var data = new Object();
+        data.firstname = fname;
+        data.lastname = lname;
+        data.password1 = pass1;
+        data.password2 = pass2;
+        data.email = email;
+        data.Gender = gen;
+        data.languages = languages;
+        data.country = country;
+        data.message = msg; var atposition = email.indexOf("@");
+        var dotposition = email.lastIndexOf("."); 
+        if (fname == null || fname == "" || lname == null || lname == "") {
+            alert(" please Enter your name");
+        } else if (pass1.length < 8 || pass2.length < 8) {
+            alert("Password must contain 8 characters");
+        } else if (pass1 !== pass2) {
+            alert("Password does not match");
+        } 
+        console.log(data); 
+         FormData(event.target); 
+    }
+    form.addEventListener("submit", getData);
+</script>
+</html>
